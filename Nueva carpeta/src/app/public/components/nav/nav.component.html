@@ -1,0 +1,34 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport>
+    <mat-toolbar>Sources</mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item (click)="onSourceSelect(source); drawer.toggle();"
+                     *ngFor="let source of sources">
+        <img [alt]="source.name"
+             [ngSrc]="source.urlToLogo"
+             height="60"
+             width="60"
+             matListItemAvatar>
+        <p matListItemLine><span> {{ source.name }} </span></p>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button (click)="drawer.toggle()"
+              aria-label="Toogle sidenav"
+              mat-icon-button
+              type="button">
+        <mat-icon aria-label="Sidenav toogle icon">menu</mat-icon>
+      </button>
+      <span>CatchUp</span>
+      <span class="spacer"></span>
+      <span>
+        <app-language-switcher/>
+      </span>
+    </mat-toolbar>
+    <app-article-list [articles]="articles"/>
+    <app-footer-content/>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
